@@ -3,7 +3,6 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-    debugger;
     MessagesView.$chats.on();
   },
 

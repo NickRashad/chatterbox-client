@@ -6,15 +6,30 @@ var RoomsView = {
   initialize: function() {
     // Add a input bar for adding a room
     //RoomsView.$button();
-    var inputHtmls = _.template(`
+    // var inputHtmls = _.template(`
 
-    `);
-    RoomsView.$button.append(inputHtml);
+    // `);
+    // RoomsView.$button.prepend(inputHtml);
   },
 
-  renderRoom: function() {
-    // Add a room from the input bar to the room selection
-  //RoomsView.$select.append(Rooms)
-  }
+  renderRoom: function(roomname) {
+    // Add a string
+    if (typeof roomname === 'string') {
+      var obj = { roomname: roomname };
+    } else if (typeof roomname === 'object') {
+      var obj = roomname;
+    }
 
+    var addRoom = _.template(`
+      <option>
+        <%- roomname %>
+      </option>
+    `);
+    var roomOption = addRoom(obj); //{roomname: rooname}
+    RoomsView.$select.append(roomOption);
+  }
 };
+
+
+
+
