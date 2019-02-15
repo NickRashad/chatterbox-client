@@ -4,12 +4,14 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    // Add a input bar for adding a room
-    //RoomsView.$button();
-    // var inputHtmls = _.template(`
-
-    // `);
-    // RoomsView.$button.prepend(inputHtml);
+    App.fetch( function (data) {
+      data.results.forEach(function (o) {
+        if (typeof o.roomname === 'string' && Rooms.roomList.indexOf(o.roomname) === -1 ) {
+          Rooms.roomList.push(o.roomname);
+          RoomsView.renderRoom(o.roomname);
+        }
+      });
+    });
   },
 
   renderRoom: function(roomname) {

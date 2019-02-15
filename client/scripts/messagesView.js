@@ -3,7 +3,21 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-    MessagesView.$chats.on();
+    // GET all messages
+    // Add them to our messages object
+    // Run renderMessage on each message
+    // MessagesView.$chats.on();
+    App.fetch( function (data) {
+      var count = 0;
+      data.results.forEach(function (o) {
+        if (typeof o.text === 'string' && typeof o.username === 'string' ) {
+          Messages[count] = (o);
+          MessagesView.renderMessage(o);
+          count ++;
+        }
+      });
+    });
+
   },
 
   renderMessage: function(message) {

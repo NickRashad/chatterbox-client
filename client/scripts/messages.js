@@ -1,5 +1,5 @@
 var Messages = {
-  
+
 };
 
 // Example of 1 message

@@ -8,9 +8,6 @@ var MessageView = {
         <div>
           <%- text %>
         </div>
-        <div>
-          <%- roomname %>
-        </div>
       </div>
     `)
 
