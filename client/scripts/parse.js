@@ -30,11 +30,3 @@ var Parse = {
   }
 
 };
-$(document).ready(function () {
-  $('.username').on('click', function (event) {
-    Friends.toggleStatus(event.currentTarget);
-    $(this).toggleClass('.usernamefriend');
-    $(this).parent().toggleClass('.friend');
-    console.log('done running');
-  });
-});

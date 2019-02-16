@@ -19,9 +19,7 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log(data);
-
+      // console.log(data);
       callback(data);
     });
   },
@@ -37,11 +35,22 @@ var App = {
   },
 };
 
-// $(document).ready(function () {
-//   $('.username').on('click', function (event) {
-//     Friends.toggleStatus(event.currentTarget);
-//     $(this).toggleClass('.usernamefriend');
-//     $(this).parent().toggleClass('.friend');
-//     console.log('done running');
-//   });
-// });
+var Listener = {
+  friend: function () {
+    setTimeout(function () {
+      $('.username').on('click', function (event) {
+        Friends.toggleStatus(event.currentTarget);
+        $(event.currentTarget).toggleClass('.usernamefriend');
+        $(event.currentTarget).parent().toggleClass('friend');
+      });
+    }, 1000);
+  },
+
+  friends: function () {
+    $('.username').on('click', function (event) {
+      Friends.toggleStatus(event.currentTarget);
+      $(event.currentTarget).toggleClass('.usernamefriend');
+      $(event.currentTarget).parent().toggleClass('friend');
+    });
+  }
+};
