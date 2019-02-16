@@ -14,7 +14,7 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
+    Listener.friend();
   },
 
   fetch: function(callback = ()=>{}) {
@@ -34,5 +34,14 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
-  }
+  },
 };
+
+// $(document).ready(function () {
+//   $('.username').on('click', function (event) {
+//     Friends.toggleStatus(event.currentTarget);
+//     $(this).toggleClass('.usernamefriend');
+//     $(this).parent().toggleClass('.friend');
+//     console.log('done running');
+//   });
+// });

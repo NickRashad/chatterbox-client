@@ -1,21 +1,14 @@
 var Friends = {
-  toggleStatus: function() {
-    // On clicking a username in chats add this friend to the friendslist
-    //$chats: $('#chats')
-    //MessagesView.$chats.
+  friendsList: [],
 
-    $('.username').on('click', function (event) {
-      // Add class of friend to username
-      $(event.currentTarget).toggle('.friend');
-      //$(event.currentTarget).addClass('.friend');
-
-    });
-
+  // On clicking a username in chats add this friend to the friendslist
+  toggleStatus: function(userEvent) {
+    //console.log(userEvent);
   },
 
-  // friendsList: []
-
-
-//$chats.('username').append(this);
-  //});
 };
+  // $('.username').on('click', function (event) {
+  //   console.log('testing')
+  //   //Friends.toggleStatus();
+  //   console.log($(event.currentTarget), event.currentTarget );
+  // });

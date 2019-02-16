@@ -14,13 +14,19 @@ var MessagesView = {
           Messages[count] = (o);
           MessagesView.renderMessage(o);
           count ++;
+          $('.username').on('click', function (event) {
+            Friends.toggleStatus(event.currentTarget);
+            $(event.currentTarget).toggleClass('.usernamefriend');
+            $(event.currentTarget).parent().toggleClass('.friend');
+            console.log('done running', this);
+          });
         }
       });
     });
 
   },
 
-  renderMessage: function(message) {
+  renderMessage: function (message) {
     // Access MessageView.render for it's templating capability
     // Create a html variable to hold the results of our templating
     // Run the templating function over message and assign to html var
@@ -29,3 +35,4 @@ var MessagesView = {
     MessagesView.$chats.append(messageHtml);
   }
 };
+
