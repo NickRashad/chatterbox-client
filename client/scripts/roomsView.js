@@ -4,6 +4,7 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
+
     App.fetch( function (data) {
       data.results.forEach(function (o) {
         if (typeof o.roomname === 'string' && Rooms.roomList.indexOf(o.roomname) === -1 ) {

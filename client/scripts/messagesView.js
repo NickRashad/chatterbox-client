@@ -9,13 +9,14 @@ var MessagesView = {
     App.fetch( function (data) {
       var count = 0;
       data.results.forEach(function (o) {
-        if (typeof o.text === 'string' && typeof o.username === 'string' ) {
+        if (o.text && o.username) {
           Messages[count] = (o);
-          MessagesView.renderMessage(o);
           count ++;
-
         }
       });
+      for (var msg in Messages) {
+        MessagesView.renderMessage(Messages[msg]);
+      }
     });
   },
 
@@ -25,11 +26,12 @@ var MessagesView = {
     // Append html to chats id
     var messageHtml = MessageView.render(message);
     MessagesView.$chats.append(messageHtml);
-    $('.username').on('click', function (event) {
-      Friends.toggleStatus(event.currentTarget);
-      $(event.currentTarget).parent().toggleClass('.friend');
-      $(event.currentTarget).toggleClass('.usernamefriend');
-    });
+    Listener.friends();
+    // $('.username').off('click').on('click', function (event) {
+    //   Friends.toggleStatus(event.currentTarget);
+    //   $(event.currentTarget).parent().toggleClass('.friend');
+    //   $(event.currentTarget).toggleClass('.usernamefriend');
+    // });
   }
 };
 

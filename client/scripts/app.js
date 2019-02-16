@@ -14,12 +14,12 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    Listener.friend();
+    Listener.friends();
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // console.log(data);
+      console.log(data);
       callback(data);
     });
   },
@@ -36,21 +36,21 @@ var App = {
 };
 
 var Listener = {
-  friend: function () {
-    setTimeout(function () {
-      $('.username').on('click', function (event) {
-        Friends.toggleStatus(event.currentTarget);
-        $(event.currentTarget).toggleClass('.usernamefriend');
-        $(event.currentTarget).parent().toggleClass('friend');
-      });
-    }, 1000);
-  },
+  // friend: function () {
+  //   setTimeout(function () {
+  //     $('.username').off('click').on('click', function (event) {
+  //       Friends.toggleStatus(event.currentTarget);
+  //       $(event.currentTarget).toggleClass('.usernamefriend');
+  //       //$(event.currentTarget).parent().toggleClass('friend');
+  //     });
+  //   }, 100);
+  // },
 
   friends: function () {
-    $('.username').on('click', function (event) {
+    $('.username').off('click').on('click', function (event) {
       Friends.toggleStatus(event.currentTarget);
       $(event.currentTarget).toggleClass('.usernamefriend');
-      $(event.currentTarget).parent().toggleClass('friend');
+      //$(event.currentTarget).parent().toggleClass('friend');
     });
   }
 };
