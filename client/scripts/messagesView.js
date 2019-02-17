@@ -4,22 +4,20 @@ var MessagesView = {
   dateOfLastMsg: 0,
 
   initialize: function() {
-    // GET all messages
-    // Add them to our messages object
-    // Run renderMessage on each message
+    // Fetch all messages and run a callback that
+    // 1. Adds all msgs to our Messages object
+    // 2. Run renderMessage on each message
     App.fetch( function (data) {
       var count = data.results.length;
       dateOfLastMsg = data.results[0].createdAt;
+
       data.results.forEach(function (o) {
-        if (o.text && o.username) {
-          Messages[count] = (o);
-          count --;
-        } else {
+        if (!o.text || !o.username) {
           o.username = o.username || 'anonymous';
           o.text = o.text || '';
-          Messages[count] = (o);
-          count --;
         }
+        Messages[count] = o;
+        count --;
       });
       for (var msg in Messages) {
         MessagesView.renderMessage(Messages[msg]);
@@ -36,10 +34,11 @@ var MessagesView = {
       data.results.reverse().forEach(function (o) {
         // Add msg if after our last added msg date
         if (o.createdAt > dateOfLastMsg) {
-          Messages[count] = (o);
           count ++;
           dateOfLastMsg = o.createdAt;
+          Messages[count] = o;
           MessagesView.renderMessage(o);
+          Friends.initialize();
         }
       });
     });

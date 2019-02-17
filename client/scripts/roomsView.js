@@ -27,8 +27,8 @@ var RoomsView = {
         <%- roomname %>
       </option>
     `);
-    var roomOption = addRoom(obj); //{roomname: rooname}
-    RoomsView.$select.append(roomOption); //RoomsView.$select.append(roomOption);
+    var roomOption = addRoom(obj);
+    RoomsView.$select.append(roomOption);
     $('select').val('');
   },
 
@@ -39,6 +39,7 @@ var RoomsView = {
         MessagesView.renderMessage(Messages[msg]);
       }
     }
+    Friends.initialize();
   }
 };
 
