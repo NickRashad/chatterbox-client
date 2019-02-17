@@ -15,7 +15,7 @@ var RoomsView = {
   },
 
   renderRoom: function(roomname) {
-    // Add a string
+    // Accepts a roomname or premade ready obj (assumes roomname is a key inside of obj)
     if (typeof roomname === 'string') {
       var obj = { roomname: roomname };
     } else if (typeof roomname === 'object') {
