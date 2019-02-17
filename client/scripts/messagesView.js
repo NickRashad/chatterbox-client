@@ -38,7 +38,7 @@ var MessagesView = {
           dateOfLastMsg = o.createdAt;
           Messages[count] = o;
           MessagesView.renderMessage(o);
-          Friends.initialize();
+          $('#chats .chat').first().toggleClass('friend');
         }
       });
     });

@@ -3,9 +3,8 @@ var Friends = {
 
   // On clicking a username in chats add this friend to the friendslist
   toggleStatus: function(userEvent) {
-    debugger;
     // Add to friendslist if not there && Splice out if there
-    // ternary indexof userEvent inside of friends list === -1
+    // ternary operator on indexof userEvent inside of friends list === -1
     // If true which means it's not there then push to friendsList array
     // If false then splice at index this 1 element at friendslist array
     var arr = Friends.friendsList;
@@ -18,7 +17,7 @@ var Friends = {
   initialize: function() {
     var arr = Friends.friendsList;
     for (var one of arr) {
-      $(`div:contains('${o}')`).parent('.chat').toggleClass('friend');
+      $(`div:contains('${one}')`).parent('.chat').toggleClass('friend');
     }
   }
 
