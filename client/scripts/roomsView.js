@@ -4,7 +4,6 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-
     App.fetch( function (data) {
       data.results.forEach(function (o) {
         if (typeof o.roomname === 'string' && Rooms.roomList.indexOf(o.roomname) === -1 ) {
@@ -29,10 +28,26 @@ var RoomsView = {
       </option>
     `);
     var roomOption = addRoom(obj); //{roomname: rooname}
-    RoomsView.$select.append(roomOption);
+    RoomsView.$select.append(roomOption); //RoomsView.$select.append(roomOption);
+    $('select').val('');
+  },
+
+  changeRooms: function(roomname) {
+    //Clear all messages
+    for (var msg in Messages) {
+      if (Messages[msg].roomname === roomname) {
+        MessagesView.renderMessage(Messages[msg]);
+      }
+    }
   }
 };
 
-
-
-
+//when select room
+//all messages with selected room id
+//message initilize
+//$('rooms').off('select').on('select)
+$('#rooms').change(function () {
+  var currRoom = $('select').val();
+  $('#chats').empty();
+  RoomsView.changeRooms(currRoom);
+});

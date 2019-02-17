@@ -12,7 +12,14 @@ var Friends = {
     var ind = arr.indexOf(userEvent.innerText);
     ind === -1 ? arr.push(userEvent.innerText) : arr.splice(ind, 1);
     // For this friend find each post and click to apply
-    $( `div:contains('${userEvent.innerText}')`).parent('.chat').toggleClass('friend');
+    $(`div:contains('${userEvent.innerText}')`).parent('.chat').toggleClass('friend');
   },
+
+  initialize: function() {
+    var arr = Friends.friendsList;
+    for (var one of arr) {
+      $(`div:contains('${o}')`).parent('.chat').toggleClass('friend');
+    }
+  }
 
 };

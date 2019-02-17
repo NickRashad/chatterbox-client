@@ -1,6 +1,10 @@
 var Rooms = {
   add: function () {
-    RoomsView.renderRoom('needsParameter');
+    var newMsg = $('#newroom').val();
+    console.log(newMsg);
+    RoomsView.renderRoom(newMsg);
+    $('select').val(`${newMsg}`);
+    $('#newroom').val('');
   },
 
   roomList: [],
@@ -9,5 +13,4 @@ var Rooms = {
 
 $('button').on('click', function (event) {
   Rooms.add();
-  console.log(event.currentTarget);
 });
