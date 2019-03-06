@@ -43,10 +43,7 @@ var RoomsView = {
   }
 };
 
-//when select room
-//all messages with selected room id
-//message initilize
-//$('rooms').off('select').on('select)
+// JQuery change listens for changes on room choice to update rooms
 $('#rooms').change(function () {
   var currRoom = $('select').val();
   $('#chats').empty();
